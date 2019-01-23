@@ -4,22 +4,26 @@
     xmlns:prism="http://prismlibrary.com/"             
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    xmlns:local="clr-namespace:WiderRibbonDemo.Views"
     x:Class="WiderRibbonDemo.Views.TaskRunTests"             
-    mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="278.667">
+    mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="278.667">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="247*"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="40.667"/>
             <RowDefinition Height="29.333"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ProgressBar Grid.Column="1" Grid.Row="1" Value="{Binding Progress}" Maximum="1"/>
-        <Button Grid.Column="1" Grid.Row="2" Command="{Binding StartRun}" Width="50" Content="Start"/>
+        <xctk:PropertyGrid Grid.Column="1"  Margin="3" SelectedObject="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TaskRunTests}}}"/>
+        <ProgressBar Grid.Column="1" Grid.Row="1" Value="{Binding Progress}" Maximum="1" Grid.ColumnSpan="2" Margin="0,0,0,29" Grid.RowSpan="2"/>
+        <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Command="{Binding StartRun}" Width="50" Content="Start"/>
 
     </Grid>
 </UserControl>
